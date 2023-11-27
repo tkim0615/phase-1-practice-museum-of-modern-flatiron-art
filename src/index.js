@@ -20,7 +20,30 @@ fetch('http://127.0.0.1:3000/current-exhibits')
     commentPElement.textContent = exhibit.comments
     comments.appendChild(commentPElement)
 
-
 })
+    const commentForm = document.getElementById('comment-form')
+    const commentSection = document.getElementById('comments-section')
+    commentForm.addEventListener('submit', e => {
+        e.preventDefault()
+
+        const pElement = document.createElement('p')
+        pElement.textContent = e.target[0].value
+        commentSection.appendChild(pElement)
+
+        commentForm.reset()
+    } )
+
+    //3
+    const tixButton = document.getElementById('buy-tickets-button')
+    tixButton.addEventListener('click', e => {
+
+        const tixBought = document.getElementById('tickets-bought')
+        let sum = Number(tixBought.textContent.split(' ')[0])
+        console.log(sum)
+        sum += 1
+        tixBought.textContent = `${sum} Tickets Bought`
+
+    })
+
 
 })
